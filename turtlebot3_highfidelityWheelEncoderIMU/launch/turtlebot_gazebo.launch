@@ -1,0 +1,37 @@
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+
+    <!-- GAZEBO PARAMETERS -->
+    
+    <arg name="use_sim_time" value="true"/>
+    <arg name="paused" value="false"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+
+  </include>
+
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param 
+    name="robot_description"	 
+    command="$(find xacro)/xacro '$(find turtlebot3_description_poisson)/urdf/turtlebot3_burger.urdf.xacro'" 
+  />
+
+
+  <!-- Spawn turtlebot3 into Gazebo -->
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+     args="-param robot_description -urdf -model turtlebot3_burger_poisson" />
+
+
+  <node name="fake_joint_calibration" pkg="rostopic" type="rostopic" args="pub /calibrated std_msgs/Bool true" />
+
+  <!-- send joint values from gui -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+
+
+  <!-- use joint positions to update tf -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  
+  
+</launch>
