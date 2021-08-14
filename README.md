@@ -128,5 +128,4 @@ Characteristic of the sensor noise can be adjusted by parameters given in the ``
     * Standard deviation values of the high noise level in the distance taken by left and right wheels
 
 ### How to cite
-If you find this repo useful you can cite our publication with:
-
+If you find this repo useful you can cite our paper:
