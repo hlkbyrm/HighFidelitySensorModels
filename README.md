@@ -83,50 +83,50 @@ Characteristic of the sensor noise can be adjusted by parameters given in the ``
     * Standard deviation values of the low noise level in the IMU’s orientation
 
 * ``imu_orientation_x_low_noise``
-* ``imu_orientation_y_low_noise:``
-* ``imu_orientation_z_low_noise:``
-* ``imu_orientation_w_low_noise:``
+* ``imu_orientation_y_low_noise``
+* ``imu_orientation_z_low_noise``
+* ``imu_orientation_w_low_noise``
 
     * Standard deviation values of the low noise level in the IMU’s angular velocity
     
-* ``imu_angular_velocity_x_low_noise:``
-* ``imu_angular_velocity_y_low_noise:``
-* ``imu_angular_velocity_z_low_noise:``
+* ``imu_angular_velocity_x_low_noise``
+* ``imu_angular_velocity_y_low_noise``
+* ``imu_angular_velocity_z_low_noise``
 
     * Standard deviation values of the low noise level in the IMU’s linear acceleration 
     
-* ``imu_linear_acceleration_x_low_noise:``
-* ``imu_linear_acceleration_y_low_noise:``
-* ``imu_linear_acceleration_z_low_noise:``
+* ``imu_linear_acceleration_x_low_noise``
+* ``imu_linear_acceleration_y_low_noise``
+* ``imu_linear_acceleration_z_low_noise``
 
     * Standard deviation values of the high noise level in the IMU’s orientation
     
-* ``imu_orientation_x_high_noise:``
-* ``imu_orientation_y_high_noise:``
-* ``imu_orientation_z_high_noise:``
-* ``imu_orientation_w_high_noise:``
+* ``imu_orientation_x_high_noise``
+* ``imu_orientation_y_high_noise``
+* ``imu_orientation_z_high_noise``
+* ``imu_orientation_w_high_noise``
 
     * Standard deviation values of the high noise level in the IMU’s angular velocity
     
-* ``imu_angular_velocity_x_high_noise:``
-* ``imu_angular_velocity_y_high_noise:``
-* ``imu_angular_velocity_z_high_noise:``
+* ``imu_angular_velocity_x_high_noise``
+* ``imu_angular_velocity_y_high_noise``
+* ``imu_angular_velocity_z_high_noise``
 
     * Standard deviation values of the high noise level in the IMU’s linear acceleration
     
-* ``imu_linear_acceleration_x_high_noise:``
-* ``imu_linear_acceleration_y_high_noise:``
-* ``imu_linear_acceleration_z_high_noise:``
+* ``imu_linear_acceleration_x_high_noise``
+* ``imu_linear_acceleration_y_high_noise``
+* ``imu_linear_acceleration_z_high_noise``
 
     * Standard deviation values of the low noise level in the distance taken by left and right wheels
     
-* ``diff_drive_left_wheel_low_noise:``
-* ``diff_drive_right_wheel_low_noise:``
+* ``diff_drive_left_wheel_low_noise``
+* ``diff_drive_right_wheel_low_noise``
 
     * Standard deviation values of the high noise level in the distance taken by left and right wheels
 
-* ``diff_drive_left_wheel_high_noise:``
-* ``diff_drive_right_wheel_high_noise:``
+* ``diff_drive_left_wheel_high_noise``
+* ``diff_drive_right_wheel_high_noise``
 
     
 ### How to cite
