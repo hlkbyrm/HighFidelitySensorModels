@@ -113,19 +113,19 @@
      accelerometer_data = sensor->LinearAcceleration();
      gyroscope_data = sensor->AngularVelocity();
  
-     //Guassian noise is applied to all measurements
-     imu_msg.orientation.x = orientation.X() + GuassianKernel(0,imu_gaussian_noise.data.at(0)) * imu_noise_on_off.data.at(0);
-     imu_msg.orientation.y = orientation.Y() + GuassianKernel(0,imu_gaussian_noise.data.at(1)) * imu_noise_on_off.data.at(1);
-     imu_msg.orientation.z = orientation.Z() + GuassianKernel(0,imu_gaussian_noise.data.at(2)) * imu_noise_on_off.data.at(2);
-     imu_msg.orientation.w = orientation.W() + GuassianKernel(0,imu_gaussian_noise.data.at(3)) * imu_noise_on_off.data.at(3);
+     //Gaussian noise is applied to all measurements
+     imu_msg.orientation.x = orientation.X() + GaussianKernel(0,imu_gaussian_noise.data.at(0)) * imu_noise_on_off.data.at(0);
+     imu_msg.orientation.y = orientation.Y() + GaussianKernel(0,imu_gaussian_noise.data.at(1)) * imu_noise_on_off.data.at(1);
+     imu_msg.orientation.z = orientation.Z() + GaussianKernel(0,imu_gaussian_noise.data.at(2)) * imu_noise_on_off.data.at(2);
+     imu_msg.orientation.w = orientation.W() + GaussianKernel(0,imu_gaussian_noise.data.at(3)) * imu_noise_on_off.data.at(3);
 
-     imu_msg.angular_velocity.x = gyroscope_data.X() + GuassianKernel(0,imu_gaussian_noise.data.at(4)) * imu_noise_on_off.data.at(4);
-     imu_msg.angular_velocity.y = gyroscope_data.Y() + GuassianKernel(0,imu_gaussian_noise.data.at(5)) * imu_noise_on_off.data.at(5);
-     imu_msg.angular_velocity.z = gyroscope_data.Z() + GuassianKernel(0,imu_gaussian_noise.data.at(6)) * imu_noise_on_off.data.at(6);
+     imu_msg.angular_velocity.x = gyroscope_data.X() + GaussianKernel(0,imu_gaussian_noise.data.at(4)) * imu_noise_on_off.data.at(4);
+     imu_msg.angular_velocity.y = gyroscope_data.Y() + GaussianKernel(0,imu_gaussian_noise.data.at(5)) * imu_noise_on_off.data.at(5);
+     imu_msg.angular_velocity.z = gyroscope_data.Z() + GaussianKernel(0,imu_gaussian_noise.data.at(6)) * imu_noise_on_off.data.at(6);
  
-     imu_msg.linear_acceleration.x = accelerometer_data.X() + GuassianKernel(0,imu_gaussian_noise.data.at(7)) * imu_noise_on_off.data.at(7);
-     imu_msg.linear_acceleration.y = accelerometer_data.Y() + GuassianKernel(0,imu_gaussian_noise.data.at(8)) * imu_noise_on_off.data.at(8);
-     imu_msg.linear_acceleration.z = accelerometer_data.Z() + GuassianKernel(0,imu_gaussian_noise.data.at(9)) * imu_noise_on_off.data.at(9);
+     imu_msg.linear_acceleration.x = accelerometer_data.X() + GaussianKernel(0,imu_gaussian_noise.data.at(7)) * imu_noise_on_off.data.at(7);
+     imu_msg.linear_acceleration.y = accelerometer_data.Y() + GaussianKernel(0,imu_gaussian_noise.data.at(8)) * imu_noise_on_off.data.at(8);
+     imu_msg.linear_acceleration.z = accelerometer_data.Z() + GaussianKernel(0,imu_gaussian_noise.data.at(9)) * imu_noise_on_off.data.at(9);
  
  
      //covariance is related to the Gaussian noise
@@ -158,13 +158,13 @@
    last_time = current_time;
  }
  
- double gazebo::GazeboRosImuSensor::GuassianKernel(double mu, double sigma)
+ double gazebo::GazeboRosImuSensor::GaussianKernel(double mu, double sigma)
  {
-   // generation of two normalized uniform random variables
+   // Generate two uniform random variables
    double U1 = ignition::math::Rand::DblUniform();
    double U2 = ignition::math::Rand::DblUniform();
  
-   // using Box-Muller transform to obtain a varaible with a standard normal distribution
+   // using Box-Muller transform to obtain a variable with normal distribution
    double Z0 = sqrt(-2.0 * ::log(U1)) * cos(2.0*M_PI * U2);
  
    // scaling
