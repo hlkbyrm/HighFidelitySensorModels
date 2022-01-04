@@ -122,11 +122,11 @@ void GazeboRosDiffDrive::Load ( physics::ModelPtr _parent, sdf::ElementPtr _sdf 
     joints_[LEFT]->SetParam ( "fmax", 0, wheel_torque );
     joints_[RIGHT]->SetParam ( "fmax", 0, wheel_torque );
 
-    // Diff Drive Noise
+    // Diff Drive Noise - Gaussian noise with 0 mean and diffd_gaussian_noise standard deviation
     for(int k = 0; k < 2; k++){
         diffd_gaussian_noise.data.push_back(0.0);
     }
-    // IMU On Off
+    // Diff Drive Noise On_Off
     for(int k = 0; k < 2; k++){
         diffd_noise_on_off.data.push_back(1);
     }
@@ -228,13 +228,13 @@ void GazeboRosDiffDrive::CallbackNoise(const std_msgs::Float32MultiArray::ConstP
     }
  }
 
-double GazeboRosDiffDrive::GuassianKernel(double mu, double sigma)
+double GazeboRosDiffDrive::GaussianKernel(double mu, double sigma)
  {
    // generation of two normalized uniform random variables
    double U1 = ignition::math::Rand::DblUniform();
    double U2 = ignition::math::Rand::DblUniform();
  
-   // using Box-Muller transform to obtain a varaible with a standard normal distribution
+   // using Box-Muller transform to obtain a variable with normal distribution
    double Z0 = sqrt(-2.0 * ::log(U1)) * cos(2.0*M_PI * U2);
  
    // scaling
@@ -426,9 +426,9 @@ void GazeboRosDiffDrive::UpdateOdometryEncoder()
 
     double b = wheel_separation_;
 
-    // Book: Sigwart 2011 Autonompus Mobile Robots page:337
-    double sl = vl * ( wheel_diameter_ / 2.0 ) * seconds_since_last_update + GuassianKernel(0, diffd_gaussian_noise.data.at(0)) * diffd_noise_on_off.data.at(0);
-    double sr = vr * ( wheel_diameter_ / 2.0 ) * seconds_since_last_update + GuassianKernel(0, diffd_gaussian_noise.data.at(1)) * diffd_noise_on_off.data.at(1);
+    // Book: Sigwart 2011 Autonomous Mobile Robots page:337
+    double sl = vl * ( wheel_diameter_ / 2.0 ) * seconds_since_last_update + GaussianKernel(0, diffd_gaussian_noise.data.at(0)) * diffd_noise_on_off.data.at(0);
+    double sr = vr * ( wheel_diameter_ / 2.0 ) * seconds_since_last_update + GaussianKernel(0, diffd_gaussian_noise.data.at(1)) * diffd_noise_on_off.data.at(1);
     double ssum = sl + sr;
 
     double sdiff;
