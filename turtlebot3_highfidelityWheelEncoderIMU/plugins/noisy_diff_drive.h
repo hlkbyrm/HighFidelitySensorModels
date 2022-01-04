@@ -99,7 +99,7 @@ namespace gazebo {
       void publishWheelTF(); /// publishes the wheel tf's
       void publishWheelJointState();
       void UpdateOdometryEncoder();
-      double GuassianKernel(double mu, double sigma);
+      double GaussianKernel(double mu, double sigma);
 
 
       GazeboRosPtr gazebo_ros_;
