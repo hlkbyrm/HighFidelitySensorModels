@@ -230,11 +230,11 @@ void GazeboRosDiffDrive::CallbackNoise(const std_msgs::Float32MultiArray::ConstP
 
 double GazeboRosDiffDrive::GaussianKernel(double mu, double sigma)
  {
-   // generation of two normalized uniform random variables
+   // Generate two uniform random numbers
    double U1 = ignition::math::Rand::DblUniform();
    double U2 = ignition::math::Rand::DblUniform();
  
-   // using Box-Muller transform to obtain a variable with normal distribution
+   // Use Box-Muller transform to obtain a variable with normal distribution
    double Z0 = sqrt(-2.0 * ::log(U1)) * cos(2.0*M_PI * U2);
  
    // scaling
