@@ -538,7 +538,7 @@ void GazeboRosDiffDrive::publishOdometry ( double step_time )
     odom_.pose.covariance[14] = gn2 * noise_on_off;
     odom_.pose.covariance[21] = gn2 * noise_on_off;
     odom_.pose.covariance[28] = gn2 * noise_on_off;
-    odom_.pose.covariance[35] = gn2 * noise_on_off;
+    odom_.pose.covariance[35] = diffd_gaussian_noise.data.at(1) * diffd_gaussian_noise.data.at(1) * diffd_noise_on_off.data.at(1);
 
 
     // set header
