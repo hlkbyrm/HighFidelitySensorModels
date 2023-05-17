@@ -51,7 +51,7 @@
  
    private:
      bool LoadParameters();
-     double GuassianKernel(double mu, double sigma);
+     double GaussianKernel(double mu, double sigma);
      
      ros::NodeHandle* node;
      ros::Publisher imu_data_publisher;
