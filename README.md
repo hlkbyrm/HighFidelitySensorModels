@@ -1,5 +1,5 @@
 # ROS Based AGV Simulation with High Fidelity IMU and Wheel Encoder Models
-This repo is based on a ROS Book Chapter (DOI and link will be provided) where the wheel encoder (differential drive) and IMU sensor plugins are modified and developed for modelling sensor uncertainties more accurately in Gazebo. 
+This repo is based on a ROS Book Chapter where the wheel encoder (differential drive) and IMU sensor plugins are modified and developed for modelling sensor uncertainties more accurately in Gazebo. 
 The original study is conducted with an industrial type AGV Gazebo model developed in Ford OTOSAN, Turkey.
 In this repo, the aforementioned plugins are integrated with a simple Turtlebot3 Gazebo model for better explanation. For the theoretical background and use cases, please refer to the paper.
 
@@ -130,4 +130,6 @@ Characteristic of the sensor noise can be adjusted by parameters given in the ``
 
     
 ### How to cite
-If you find this repo useful, you can cite our paper:
+You can cite our paper:
+
+Ozdemir, E., Gokoglu, H., Yilmaz, M.K., Dumandag, U., Savci, I.H., Bayram, H. (2023). High Fidelity IMU and Wheel Encoder Models for ROS Based AGV Simulations. In: Koubaa, A. (eds) Robot Operating System (ROS). Studies in Computational Intelligence, vol 1051. Springer, Cham. https://doi.org/10.1007/978-3-031-09062-2_7
